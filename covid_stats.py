@@ -1,6 +1,8 @@
 import requests
 import json 
 import re
+from datetime import date
+
 
 def get_date_label():
 	url = "http://ncov.sinave.gob.mx/mapa.aspx"
@@ -13,10 +15,14 @@ def get_date_label():
 def get_stats(resource):
 	url = "http://ncov.sinave.gob.mx/Mapa45.aspx/Grafica"+resource
 	req = requests.post(url, data={}, headers= {"Content-Type":"application/json; charset=utf-8"})
-
+	
 	raw_data = json.loads(req.text)["d"]
 	result = json.loads(raw_data)
 	update_label = get_date_label();
+
+	
+	# if result is None:
+	# 	throws Exception(" error")
 
 	parse_data = {
 		"national_totals": {
@@ -46,30 +52,25 @@ def get_stats(resource):
 
 	return parse_data
 
-last_resource = "23"
-print(get_stats(last_resource))
-	
+
+def get_last_stats():
+	initial_date = date(2020, 3, 27)
+	today = date.today()
+	delta = today-initial_date
+	last_resource = 23 + delta.days
+	intents = 3
+
+	for i in range(last_resource, last_resource-intents, -1):
+		try:
+			print(i)
+			return get_stats(str(i))
+		except Exception as e:
+			continue
+
+	return {
+		"error": "Not data found."
+	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(get_last_stats())
 
