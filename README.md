@@ -22,7 +22,7 @@ Response
 			"suspicious_cases": 0,
 			"deads": 0
 		}],
-	"update_label": update_label
+	"update_label": "Cierre con corte a las 13:00 hrs, 27 de Marzo de 2020"
 }
 ```
 
