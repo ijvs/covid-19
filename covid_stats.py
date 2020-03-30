@@ -6,7 +6,7 @@ from datetime import date
 class DataToJson:
 	"""Class to convert government data format to beatiful JSON"""
 	def __init__(this):
-		this.url_mapa = "http://ncov.sinave.gob.mx/mapa.aspx"
+		this.url_mapa = "http://ncov.sinave.gob.mx/mapa45.aspx"
 		this.req = requests.get(this.url_mapa)
 		this.headers = {"Content-Type":"application/json; charset=utf-8"}
 			
