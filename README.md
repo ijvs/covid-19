@@ -26,4 +26,4 @@ Response
 }
 ```
 
-Source: `http://ncov.sinave.gob.mx/mapa.aspx`
+Source: `http://ncov.sinave.gob.mx/mapa45.aspx`
